@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  height: 7rem;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  padding: 0.9rem;
+  gap: 8px;
+  max-width: 30rem;
+  background-color: var(--gray-500);
+  border: 1px solid var(--gray-900);
+  border-radius: 8px;
+  flex: none;
+}
+
+button {
+  color: var(--white);
+  padding: 16px;
+  gap: 8px;
+  width: 90px;
+  height: 52px;
+  background: #1e6f9f;
+  border-radius: 8px;
+  flex: none;
+}
