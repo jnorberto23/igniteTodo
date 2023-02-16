@@ -1,3 +1,10 @@
+import { Header } from "./components/Header";
+import "./global.css";
+
 export function App() {
-  return <div>Hello World</div>;
+  return (
+    <div>
+      <Header />
+    </div>
+  );
 }
