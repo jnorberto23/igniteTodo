@@ -1,7 +1,10 @@
 .container {
+  max-width: 70rem;
+  margin: 2rem auto;
+  padding: 0 1rem;
+
   display: flex;
   height: 7rem;
-  width: 100%;
   margin-top: -3.5rem;
   justify-content: center;
   align-items: center;
@@ -28,6 +31,7 @@
 }
 
 .wrapper button {
+  margin-left: 0.5rem;
   color: var(--white);
   font-size: 0.8rem;
   width: 5rem;

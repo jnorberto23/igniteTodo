@@ -1,10 +1,10 @@
 .container {
-  gap: 24px;
   position: absolute;
+  max-width: 70rem;
+  margin: 2rem auto;
   left: calc(50% - 736px / 2);
   top: 240px;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
 }
@@ -15,23 +15,6 @@
   justify-content: space-between;
 }
 
-@media (max-width: 700px) {
-  .container {
-    display: flex;
-    left: 0;
-    top: 0;
-    position: relative;
-    align-items: center;
-  }
-
-  .tasksInfo {
-    width: 768px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-  }
-}
-
 .tasksInfoCreated {
   color: var(--blue-100);
 }
@@ -40,7 +23,7 @@
   color: var(--purple);
 }
 
-.container span {
+.tasksInfo span {
   padding: 2px 8px;
   margin-left: 8px;
   gap: 10px;
@@ -51,30 +34,23 @@
   border-radius: 999px;
 }
 
-.content {
-  box-sizing: border-box;
+@media (max-width: 700px) {
+  .container {
+    display: flex;
+    left: 0;
+    top: 0;
+    position: relative;
+  }
 
-  /* Auto layout */
+  .tasksInfo {
+    width: 768px;
+    display: flex;
+    margin: auto;
+    padding: auto;
+    justify-content: space-around;
+  }
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 64px 24px;
-  gap: 16px;
-
-  width: 736px;
-  height: 244px;
-
-  /* Grey 400 */
-
-  border-top: 1px solid #333333;
-  border-radius: 8px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 1;
-  align-self: stretch;
-  flex-grow: 0;
+  .tasksInfo span {
+    margin-left: 0.3rem;
+  }
 }
