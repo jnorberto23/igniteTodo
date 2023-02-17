@@ -1,0 +1,11 @@
+.container {
+  width: 100%;
+  padding: auto;
+  margin: auto;
+}
+
+.tasksInfo {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
