@@ -7,6 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .tasksInfo {
@@ -34,19 +35,43 @@
   border-radius: 999px;
 }
 
+.content {
+  width: 100vh;
+  display: flex;
+}
+
+.content .contentList {
+  display: flex;
+  flex-direction: column;
+}
+
+.contentItem {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 16px;
+  gap: 12px;
+  width: 736px;
+  height: 72px;
+  background: #262626;
+  border: 1px solid #333333;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+}
+
 @media (max-width: 700px) {
   .container {
     display: flex;
     left: 0;
     top: 0;
     position: relative;
+    flex-direction: row;
   }
 
   .tasksInfo {
-    width: 768px;
+    width: 700px;
     display: flex;
-    margin: auto;
-    padding: auto;
     justify-content: space-around;
   }
 

@@ -13,7 +13,16 @@ export function Tasks() {
         </strong>
       </div>
 
-      <div></div>
+      <div className={styles.content}>
+        <fieldset className={styles.contentList}>
+          <label className={styles.contentItem}>
+            <input type="checkbox" /> checkbox 1
+          </label>
+          <label className={styles.contentItem}>
+            <input type="checkbox" /> checkbox 2
+          </label>
+        </fieldset>
+      </div>
     </article>
   );
 }
