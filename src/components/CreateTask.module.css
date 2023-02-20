@@ -1,8 +1,5 @@
 .container {
   max-width: 70rem;
-  margin: 2rem auto;
-  padding: 0 1rem;
-
   display: flex;
   height: 7rem;
   margin-top: -3.5rem;

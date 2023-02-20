@@ -1,19 +1,11 @@
-.container {
-  position: absolute;
-  max-width: 70rem;
-  margin: 2rem auto;
-  left: calc(50% - 736px / 2);
-  top: 240px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
 .tasksInfo {
-  width: 100vh;
+  width: 70vw;
+  max-width: 47rem;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .tasksInfoCreated {
@@ -35,13 +27,9 @@
   border-radius: 999px;
 }
 
-.content {
-  width: 100vh;
-  display: flex;
-  border: none;
-}
-
-.content .contentList {
+.contentList {
+  max-width: 47rem;
+  width: 80vw;
   display: flex;
   flex-direction: column;
   border: none;
@@ -54,16 +42,13 @@
   align-items: flex-start;
   padding: 16px;
   gap: 12px;
-  width: 736px;
+  width: 100%;
   height: 72px;
   background: #262626;
   border: 1px solid #333333;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.06);
   border-radius: 8px;
-}
-
-.contentItem:first-child {
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .checkboxRound {
@@ -86,25 +71,21 @@
   color: white;
   visibility: visible;
 }
+
 @media (max-width: 700px) {
   .tasksInfo {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-  }
-
-  .tasksInfo span {
-    margin-left: 0.3rem;
-  }
-  .content {
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
 
-  .content .contentList {
+  .tasksInfo span {
+    margin-left: 0.3rem;
+  }
+  /* .content {
     display: flex;
     flex-direction: row;
-    border: none;
-  }
+    justify-content: space-between;
+  } */
 }
