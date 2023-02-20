@@ -12,6 +12,7 @@
 }
 
 .wrapper input {
+  color: var(--white);
   padding: 0.9rem;
   gap: 8px;
   width: 42rem;

@@ -1,6 +1,11 @@
 import { Trash } from "phosphor-react";
 import styles from "./Tasks.module.css";
-export function Tasks() {
+
+type PropsType = {
+  data: string[];
+};
+
+export function Tasks({ data }: PropsType) {
   return (
     <article>
       <article className={styles.tasksInfo}>
@@ -13,17 +18,16 @@ export function Tasks() {
           <span>2</span>
         </strong>
       </article>
-      <fieldset className={styles.contentList}>
+
+      {data.map((task: string) => (
         <label className={styles.contentItem}>
-          <input type="checkbox" className={styles.checkboxRound} /> checkbox 1
+          <input type="checkbox" className={styles.checkboxRound} />
+          {task}
           <button className={styles.removeIcon}>
             <Trash size={20} />
           </button>
         </label>
-        <label className={styles.contentItem}>
-          <input type="checkbox" className={styles.checkboxRound} /> checkbox 2
-        </label>
-      </fieldset>
+      ))}
     </article>
   );
 }

@@ -11,7 +11,6 @@ export function App() {
       <main className={styles.container}>
         <Header />
         <CreateTask />
-        <Tasks />
       </main>
     </Fragment>
   );
