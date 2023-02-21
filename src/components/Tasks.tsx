@@ -18,7 +18,6 @@ export function TasksList({
   onChangeCheckInput,
   onDeleteTask,
 }: TaskListsPropsType) {
-  const [taskvalue, setTaskValue] = useState("");
   function handleCheckInputChange(
     e: React.ChangeEvent<HTMLInputElement>
   ): void {
@@ -26,7 +25,6 @@ export function TasksList({
   }
 
   function handleDeleteTask(task: string) {
-    console.log("recebido", task);
     onDeleteTask(task);
   }
 
@@ -42,7 +40,7 @@ export function TasksList({
             />
             {task}
             <button
-              onClick={(task) => handleDeleteTask(String(task))}
+              onClick={() => onDeleteTask(task)}
               className={styles.removeIcon}
             >
               <Trash size={20} />
