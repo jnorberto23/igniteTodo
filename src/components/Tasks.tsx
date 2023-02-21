@@ -62,7 +62,6 @@ export function TasksList({
 
 export function Tasks({ data, onDeleteTask }: TasksPropsType) {
   const [checkedCount, setCheckedCount] = useState<number>(0);
-
   function changeCheckInput(e: React.ChangeEvent<HTMLInputElement>): void {
     if (e.target.checked) {
       setCheckedCount(checkedCount + 1);

@@ -18,9 +18,6 @@ export function CreateTask() {
   }
   function deleteTask(taskToDelete: string): void {
     const tasksWithoutDeletedOne = tasks.filter((task) => {
-      console.log("task", task);
-      console.log("taskToDelete", taskToDelete);
-
       return task !== taskToDelete;
     });
     setTasks(tasksWithoutDeletedOne);
