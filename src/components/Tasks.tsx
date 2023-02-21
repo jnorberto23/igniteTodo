@@ -1,17 +1,31 @@
 import { ClipboardText, Trash } from "phosphor-react";
+import { SetStateAction, useState } from "react";
 import styles from "./Tasks.module.css";
 
-type PropsType = {
+type TasksPropsType = {
   data: string[];
 };
 
-export function TasksList({ data }: PropsType) {
+type TaskListsPropsType = {
+  data: string[];
+  handleCheckInput: Function;
+};
+
+export function TasksList({ data, handleCheckInput }: TaskListsPropsType) {
+  function handleInputChange(e: React.ChangeEvent<HTMLInputElement>): void {
+    console.log("clicou");
+    handleCheckInput(e);
+  }
   if (data.length) {
     return (
       <fieldset className={styles.contentList}>
         {data.map((task: string) => (
           <label className={styles.contentItem}>
-            <input type="checkbox" className={styles.checkboxRound} />
+            <input
+              onChange={handleInputChange}
+              type="checkbox"
+              className={styles.checkboxRound}
+            />
             {task}
             <button className={styles.removeIcon}>
               <Trash size={20} />
@@ -31,7 +45,17 @@ export function TasksList({ data }: PropsType) {
   }
 }
 
-export function Tasks({ data }: PropsType) {
+export function Tasks({ data }: TasksPropsType) {
+  const [checkedCount, setCheckedCount] = useState<number>(0);
+
+  function handleCheckInput(e: React.ChangeEvent<HTMLInputElement>): void {
+    if (e.target.checked) {
+      setCheckedCount(checkedCount + 1);
+    } else {
+      setCheckedCount(checkedCount - 1);
+    }
+  }
+
   return (
     <article>
       <article className={styles.tasksInfo}>
@@ -41,11 +65,13 @@ export function Tasks({ data }: PropsType) {
         </strong>
         <strong className={styles.tasksInfoDone}>
           Concluídas
-          <span>2</span>
+          <span>
+            {!data.length ? checkedCount : `${checkedCount} de ${data.length}`}
+          </span>
         </strong>
       </article>
 
-      <TasksList data={data} />
+      <TasksList data={data} handleCheckInput={handleCheckInput} />
     </article>
   );
 }
