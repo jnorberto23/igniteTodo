@@ -1,4 +1,4 @@
-import { Clipboard, Trash } from "phosphor-react";
+import { ClipboardText, Trash } from "phosphor-react";
 import styles from "./Tasks.module.css";
 
 type PropsType = {
@@ -22,8 +22,10 @@ export function TasksList({ data }: PropsType) {
     );
   } else {
     return (
-      <div>
-        <Clipboard size={60} />
+      <div className={styles.contentEmpty}>
+        <ClipboardText size={50} />
+        <strong>Você ainda não tem tarefas cadastradas</strong>
+        <span>Crie tarefas e organize seus itens a fazer</span>
       </div>
     );
   }
@@ -35,7 +37,7 @@ export function Tasks({ data }: PropsType) {
       <article className={styles.tasksInfo}>
         <strong className={styles.tasksInfoCreated}>
           Tarefas criadas
-          <span>2</span>
+          <span>{data.length}</span>
         </strong>
         <strong className={styles.tasksInfoDone}>
           Concluídas
