@@ -7,22 +7,31 @@ export function CreateTask() {
   const [inputTask, setInputTask] = useState<string>("");
   const [tasks, setTasks] = useState<string[]>([]);
 
-  function handleInputTestChange(e: React.ChangeEvent<HTMLInputElement>): void {
-    setInputTask(e.target.value);
-  }
   function handleCreateNewTask(e: React.MouseEvent<HTMLElement>): void {
     e.preventDefault();
     setTasks([...tasks, inputTask]);
     setInputTask("");
   }
 
+  function handleInputTaskChange(e: React.ChangeEvent<HTMLInputElement>): void {
+    setInputTask(e.target.value);
+  }
+  function deleteTask(taskToDelete: string): void {
+    const tasksWithoutDeletedOne = tasks.filter((task) => {
+      console.log("task", task);
+      console.log("taskToDelete", taskToDelete);
+
+      return task !== taskToDelete;
+    });
+    setTasks(tasksWithoutDeletedOne);
+  }
   return (
     <Fragment>
       <div className={styles.container}>
         <form>
           <div className={styles.wrapper}>
             <input
-              onChange={handleInputTestChange}
+              onChange={handleInputTaskChange}
               type="text"
               value={inputTask}
               placeholder="Adicione uma nova tarefa"
@@ -33,7 +42,7 @@ export function CreateTask() {
           </div>
         </form>
       </div>
-      <Tasks data={tasks} />
+      <Tasks data={tasks} onDeleteTask={deleteTask} />
     </Fragment>
   );
 }

@@ -4,30 +4,47 @@ import styles from "./Tasks.module.css";
 
 type TasksPropsType = {
   data: string[];
+  onDeleteTask: Function;
 };
 
 type TaskListsPropsType = {
   data: string[];
-  handleCheckInput: Function;
+  onChangeCheckInput: Function;
+  onDeleteTask: Function;
 };
 
-export function TasksList({ data, handleCheckInput }: TaskListsPropsType) {
-  function handleInputChange(e: React.ChangeEvent<HTMLInputElement>): void {
-    console.log("clicou");
-    handleCheckInput(e);
+export function TasksList({
+  data,
+  onChangeCheckInput,
+  onDeleteTask,
+}: TaskListsPropsType) {
+  const [taskvalue, setTaskValue] = useState("");
+  function handleCheckInputChange(
+    e: React.ChangeEvent<HTMLInputElement>
+  ): void {
+    onChangeCheckInput(e);
   }
+
+  function handleDeleteTask(task: string) {
+    console.log("recebido", task);
+    onDeleteTask(task);
+  }
+
   if (data.length) {
     return (
       <fieldset className={styles.contentList}>
         {data.map((task: string) => (
           <label className={styles.contentItem}>
             <input
-              onChange={handleInputChange}
+              onChange={handleCheckInputChange}
               type="checkbox"
               className={styles.checkboxRound}
             />
             {task}
-            <button className={styles.removeIcon}>
+            <button
+              onClick={(task) => handleDeleteTask(String(task))}
+              className={styles.removeIcon}
+            >
               <Trash size={20} />
             </button>
           </label>
@@ -45,10 +62,10 @@ export function TasksList({ data, handleCheckInput }: TaskListsPropsType) {
   }
 }
 
-export function Tasks({ data }: TasksPropsType) {
+export function Tasks({ data, onDeleteTask }: TasksPropsType) {
   const [checkedCount, setCheckedCount] = useState<number>(0);
 
-  function handleCheckInput(e: React.ChangeEvent<HTMLInputElement>): void {
+  function changeCheckInput(e: React.ChangeEvent<HTMLInputElement>): void {
     if (e.target.checked) {
       setCheckedCount(checkedCount + 1);
     } else {
@@ -71,7 +88,11 @@ export function Tasks({ data }: TasksPropsType) {
         </strong>
       </article>
 
-      <TasksList data={data} handleCheckInput={handleCheckInput} />
+      <TasksList
+        data={data}
+        onChangeCheckInput={changeCheckInput}
+        onDeleteTask={onDeleteTask}
+      />
     </article>
   );
 }
